@@ -4,13 +4,17 @@ systemd Timers:
     - can use 'OnCalendar=' option to use exact time
         Syntax:
         DayOfWeek Year-Month-Day Hour:Minute:Second
-Example:
-[Unit]
-Description=Run the weekly backup script
+    - let systemd load unit by 'sudo systemctl daemon-reload'
+    - start and enable by running 'sudo systemctl --now enable <name>.timer
+    - Example:
+        [Unit]
+        Description=Run the weekly backup script
 
-[Timer]
-OnCalendar= Mon *-*-* 03:30:00
-Persistent=true
+        [Timer]
+        OnCalendar= Mon *-*-* 03:30:00
+        Persistent=true
 
-[Install]
-WantedBy=timers.target
+        [Install]
+        WantedBy=timers.target
+    - list current timers with 'systemclt list-timers' or add '--all' to also show inactive
+
