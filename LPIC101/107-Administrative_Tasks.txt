@@ -1,0 +1,16 @@
+systemd Timers:
+    - unit files with suffix of .timer
+    - includes a '[Timer]' stanza
+    - can use 'OnCalendar=' option to use exact time
+        Syntax:
+        DayOfWeek Year-Month-Day Hour:Minute:Second
+Example:
+[Unit]
+Description=Run the weekly backup script
+
+[Timer]
+OnCalendar= Mon *-*-* 03:30:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
