@@ -3,7 +3,12 @@ systemd Timers:
     - includes a '[Timer]' stanza
     - can use 'OnCalendar=' option to use exact time
         Syntax:
-        DayOfWeek Year-Month-Day Hour:Minute:Second
+            - DayOfWeek Year-Month-Day Hour:Minute:Second
+            - hourly
+            - daily
+            - weekly
+            - monthly
+            - yearly
     - let systemd load unit by 'sudo systemctl daemon-reload'
     - start and enable by running 'sudo systemctl --now enable <name>.timer
     - Example:
@@ -17,4 +22,35 @@ systemd Timers:
         [Install]
         WantedBy=timers.target
     - list current timers with 'systemclt list-timers' or add '--all' to also show inactive
+
+scheduling with at:
+    - Commands:
+        - at
+        - atq
+        - atrm
+    - at options:
+        -c prints commands for specific job ID
+        -d alias for atrm
+        -f read job from file instead of STDIN
+        -l alias for atq
+        -m send mail to user at end of job
+        -q specify a queue
+        -v show time job will run
+    - Time Examples:
+        $ at 5pm tomorrow
+        $ at noon
+        $ at midnight
+        $ at teatime (4PM)
+        $ at 22:30
+        $ at 10/04/2025
+        $ at now +5 hours
+        $ at wednesday
+    - Example:
+        $ at noon
+        warning: commands will be executed using /bin/sh
+        at> reboot
+        at> <EOT>       #pressed ctrl+d
+        job 1 at Tue Nov 12 12:00:00 2024
+
+Alternative to at:
 
