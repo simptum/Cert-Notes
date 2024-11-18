@@ -57,3 +57,31 @@ Alternative to at:
     - Example:
         # systemd-run --on-calendar='2024-11-25 11:30' date
 
+Localisation and internationalisation:
+    Time and Date:
+    - timedatectl: command for systmed systems displaying timezone system time/date
+    - /etc/timezone: system location for timezone
+    - tzselect: a prompted tool for selecting proper timezone
+    - /etc/localtime: daylight savings system location for timezone
+    
+    Language and Character Encoding:
+    - $LANG: ab_CD, where ab=language code, CD=region code
+    - Example:
+        $ echo $LANG
+        en_US.UTF-8
+    - /etc/locale.conf: main system config for $LANG and orther locale vars
+    - localectl: systemd command to configure systems locale
+    - Example:
+        # localectl set-locale LANG=en_US.UTF-8
+    - Additional locale vars:
+        - LC_COLLATE: alphabetical ordering
+        - LC_CTYPE: defines sets of characters, ie. upper/lowercase
+        - LC_MESSAGES: display program messages (GNU)
+        - LC_MONETARY: currency format
+        - LC_NUMERIC: numerical format for non-monetary values
+    
+    Encoding Conversion:
+    - iconv: converts files from one encoding to another
+    - Example:
+        $ iconv -f ISO-8859-1 -t UTF-8 original.txt > converted.txt
+    - You can also add -o or --output instead of using redirection
