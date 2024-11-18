@@ -53,4 +53,7 @@ scheduling with at:
         job 1 at Tue Nov 12 12:00:00 2024
 
 Alternative to at:
+    - systemd-run : creates a transient timer unit for a command to be executed
+    - Example:
+        # systemd-run --on-calendar='2024-11-25 11:30' date
 
