@@ -1,0 +1,22 @@
+Date and Clock:
+    - hwclock: shows the real-time clock (requires sudo)
+        - --verbose: useful to show clock drift
+    - timedatectl: preferred way of setting time on systemd
+        - list-timezones
+        - set-ntp 1: set ntp on
+    - Set time without timedatectl by creating symlink to TZ file
+        $ sudo ln -s /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+    - Set hwclock based on system time:
+        $ sudo hwclock --systohc #system clock to hardware clock
+    - Set date w/o timedatectl:
+        $ sudo date --set="11 Nov 2024 00:00:00"
+        $ sudo hwclock --set --date "4/12/2036 19:15:21"
+    - Set system time from hwclock:
+        $ sudo hwclock --hctosys
+
+NTP:
+timedatectl:
+    - implements SNTP by default which depends on timesyncd (systemctl status systemd-timesyncd)
+    - show status of SNTP sync:
+        $ timedatectl show-timesync --all
+    - for full NTP, use
